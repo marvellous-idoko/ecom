@@ -1,0 +1,45 @@
+<section>
+    <div class="flex">
+        <form [formGroup]="prodForm" class="flex" style="flex-direction: column;" (ngSubmit)="submit()">
+            <mat-form-field>
+                <mat-label>Name of Product</mat-label>
+                <input type="text" formControlName="name" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Price</mat-label>
+                <input type="number" formControlName="price" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Model of Product</mat-label>
+                <input type="text" formControlName="model" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>category of Product</mat-label>
+                <mat-select formControlName="category">
+
+                    <mat-option value="{{cat}}" *ngFor="let cat of cats">
+                        {{cat}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product Description</mat-label>
+                <textarea formControlName="desc" cols="30" rows="5" matInput>
+
+                 </textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Quantity Available</mat-label>
+                <input type="number" formControlName="qty" matInput>
+            </mat-form-field>
+
+               <div style="margin: 20px 0;">
+
+                   <mat-label>Product Image</mat-label>
+                    <input type="file" accept="image/*"  id="file" (change)="handleFileInput($event)">
+               </div> 
+            <button mat-raised-button color="primary">Add Product to Counter</button>
+        </form>
+    </div>
+</section>

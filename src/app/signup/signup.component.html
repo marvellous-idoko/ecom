@@ -1,0 +1,27 @@
+<section>
+    <div>
+        <div class="flex" style="height: 90vh;">
+            <form  class="flex" style="flex-direction: column;" [formGroup]="regForm" (ngSubmit)="submit()">
+                <h1>Sign Up</h1>
+                <mat-form-field>
+                    <mat-label>Full Name</mat-label>
+                    <input type="text" formControlName="name" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>email</mat-label>
+                    <input type="enail" formControlName="email" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" formControlName="pwd" matInput>
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" formControlName="cpwd" matInput>
+                </mat-form-field>
+                <button mat-raised-button color="primary">Register</button>
+            </form>
+        </div>
+    </div>
+</section>

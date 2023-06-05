@@ -1,0 +1,14 @@
+.ki{
+    height: 50vh;
+    background-image: url(../../assets/juhzcvfx6njaza1vhf7p.webp);
+}
+#de{
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.wlcTxt{
+    color: var(--white);
+}
+.secPad{
+    padding: 0 10em;
+}

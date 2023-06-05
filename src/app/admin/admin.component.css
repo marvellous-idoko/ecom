@@ -1,0 +1,21 @@
+.link:hover{
+    background-color: var(--lightHover);
+}
+    .link{
+    padding: 1em;
+    display: block;
+    width: 90%;
+    color: var(--light);
+    text-decoration: none;
+}
+aside{
+    color: var(--light);
+    background-color: var(--dark);
+    width: 20vw;
+}
+main{
+    width: 75vw;
+}
+aside,main{
+    height: 100vh;
+}

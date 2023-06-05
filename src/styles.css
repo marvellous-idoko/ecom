@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --light: #0de7fb;
+    --lightHover: #0de7fb56;
+    --dark: #36043c;
+    --white: white;
+    --hash: #cccccc4e;
+
+}
+
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.crvCor {
+    border-radius: 10px;
+}
+
+.bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.flex {
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+.btn {
+    border: 0;
+    padding: .5em 1.5vw;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+aside{
+    color: var(--light);
+    background-color: var(--dark);
+    width: 20vw;
+}
+main{
+    width: 75vw;
+}
+.trans{
+    transition: .25s;
+}
+h4 {
+    margin: 2px;
+    color: var(--light);
+}
+
+ul,li{
+    padding: 0;
+    list-style: nones;
+}
+
+.prodCar {
+    width: 16vw;
+    border: 1px solid var(--dark);
+    padding: 0.5em;
+}
+
+.prodImg {
+    width: 100%;
+    height: 25vh;
+    margin: 0;
+}
+
+.lytBtn:hover {
+    background-color: var(--hash);
+    border: var(--dark) solid 1px;
+}
+
+.lytBtn {
+    background-color: transparent;
+    color: var(--dark);
+}

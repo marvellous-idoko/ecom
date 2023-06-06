@@ -12,7 +12,7 @@ export class SignupComponent {
   constructor(private fb: FormBuilder, private s: SrvService, private r:Router) { }
   regForm = this.fb.group({
     name: ['', Validators.required,],
-    email: ['', Validators.required],
+    email: ['', Validators.required,Validators.email],
     cpwd: ['', Validators.required,],
     pwd: ['', Validators.required, ]
   })

@@ -1,2 +1,29 @@
+<section>
+    <div class="flex">
+        <ul>
+            <li class="ldt trans crvCor" *ngFor="let prod of prods">
+                <div class="flex crvCor">
+                    <img class="crvCor" width="300" src="{{prod.photo}}" alt="">
+                    <div>
 
-<h1>pokijhg</h1>
+                        <div>
+                            <h4>{{prod.name}}</h4>
+                            <div class="osd">
+                                <p>Amount</p>
+                                <b>{{prod.price | currency:"NGN "}}</b>
+                            </div>
+                        </div>
+                        <div class="osd">
+                            <p> Quantity Left</p><b>{{prod.qty | number}}</b>
+                        </div>
+                        <div class="osd">
+                            <p> Model</p> <b>{{prod.model}}</b>
+                        </div>
+                
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

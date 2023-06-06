@@ -12,5 +12,9 @@
 </head>
 <body>
   <app-root></app-root>
+<script>
+  window. onbeforeunload = function() { localStorage.removeItem('key'); return ''; };
+</script>
 </body>
+
 </html>

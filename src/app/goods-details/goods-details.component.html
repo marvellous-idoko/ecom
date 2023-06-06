@@ -1,1 +1,51 @@
-<p>goods-details works!</p>
+<section>
+    <div>
+        <h1 style="text-align: center;color: var(--dark);">Product Details Page</h1>
+        <div class="flex" style="height: 50vh;">
+            <figure style="height: inherit;width: 20vw;" class="bg" style="background-image: url({{prod.photo}});">
+                <!-- <img src="" alt="" srcset=""> -->
+            </figure>
+            <div>
+                <div>
+                    <h3>{{prod.name}}</h3>
+                </div>
+                <div>
+                    <p>Model</p>
+                    <h3>{{prod.model}}</h3>
+                </div>
+                <div>
+                    <p>Category</p>
+                    <h3>{{prod.cat}}</h3>
+                </div>
+                <div>
+                    <p>Description</p>
+                    <h3>{{prod.desc}}</h3>
+                </div>
+                <div>
+                    <p>Price </p>
+                    <h3>{{prod.price | currency:"NGN "}}</h3>
+                </div>
+
+                <form *ngIf="showQty" [formGroup]="qtyFrm">
+                    <mat-form-field>
+                        <mat-label>Quantity</mat-label>
+                        <input type="number" formControlName="qty" id="" matInput>
+                    </mat-form-field>
+                </form>
+                <button *ngIf="!showQty" mat-stroked-button color="accent" (click)="showQty = !showQty">
+                    <span *ngIf="!showQty">Purchase</span>
+                    <span *ngIf="showQty">Check Availability</span>
+                </button>
+                <button *ngIf="showQty" id="kil" (click)="checkAvail()" mat-raised-button color="primary">
+                    <span>Check Availability</span>
+                </button>
+                <button id="kilq" style="display:none;" (click)="addToCart()" mat-raised-button color="primary">
+                    <span>Add to Cart</span>
+                </button>
+                <br>
+                <i id="kjil"></i>
+            </div>
+
+        </div>
+    </div>
+</section>

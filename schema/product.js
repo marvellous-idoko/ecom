@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Stdnt = mongoose.Schema({
+const prod = mongoose.Schema({
     dateReg:Date,
     price:Number,
     qty:Number,
@@ -9,7 +9,9 @@ const Stdnt = mongoose.Schema({
     name:String,
     model:String,
     cat:String,
-    desc:String
+    desc:String,
+    photo:String
+    
 
 })
-module.exports = mongoose.model('nataUser', Stdnt);
+module.exports = mongoose.model('productEcom', prod);

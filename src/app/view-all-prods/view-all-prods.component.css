@@ -1,0 +1,13 @@
+.osd{
+    min-width: 10em;
+}
+.ldt{
+    width: fit-content;
+    padding: 10px;
+}.ldt:hover{
+    background-color: var(--lightHover) ;
+
+}
+aside{
+    position: fixed;
+}

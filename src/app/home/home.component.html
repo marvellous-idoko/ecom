@@ -2,13 +2,13 @@
     <div class="ki bg">
         <div class="flex secPad" id="de">
             <div style="flex: 1;">
-                <h1 class="wlcTxt">Simplicity Defined</h1>
-                <h1 class="wlcTxt">Explore with1 Total freedom </h1>
-                <h1 class="wlcTxt">Get th1e Bagback at $10 </h1>
+                <h1 class="wlcTxt">Simplicity  <b style="color:var(--light)">Defined</b></h1>
+                <h1 class="wlcTxt">Explore with Total  <b style="color:var(--light)">freedom</b> </h1>
+                <h1 class="wlcTxt">Get the Bagback at <b style="color:var(--light)">$10</b> </h1>
 
                 <div>
-                    <button mat-button>View Details</button>
-                    <button  mat-button>Buy Now</button>
+                    <button mat-raised-button>Buy Now</button>
+                    <button  mat-stroked-button> <b style="color:white"> View Details</b></button>
                 </div>
             </div>
             <div style="flex: 1;height: inherit;">
@@ -23,65 +23,26 @@
 <section>
     <div style="height:50vh;" class="secPad">
         <h2>
-            Electronics
+            Home Items
         </h2>
         <div class="flex" style="justify-content: space-around;">
 
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/1_-_NAKEDVICE_-_THE_LEXIE_BAG_in_Ivory_NYLON_2528BACA21080002012529_7.jpg);">
-    
+            <div class="prodCar crvCor" *ngFor="let prod of prods">
+                <figure class="crvCor prodImg bg" style="background-image: url({{prod.photo}});">
                 </figure>
-                <h4>Beautiful bag</h4>
+                <h4>{{prod.name}}</h4>
                 <div class="flex" style="place-content: space-between;">
 
-                    <button class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
+                    <button class="lytBtn trans btn trasn" (click)="gotDet(prod.id)">Details</button>
+                    <button class="btn primary" (click)="gotDet(prod.id)">Buy Now</button>
                 </div>
             </div>
-            
-
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/A-Fendi-bag.jpg);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/160851_1653064485.webp);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            
-            
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/1_-_NAKEDVICE_-_THE_LEXIE_BAG_in_Ivory_NYLON_2528BACA21080002012529_7.jpg);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            
-
             
         </div>
         
     </div>
 </section>
+
 <section>
     <div style="height:50vh;" class="secPad">
         <h2>
@@ -89,56 +50,16 @@
         </h2>
         <div class="flex" style="justify-content: space-around;">
 
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/1_-_NAKEDVICE_-_THE_LEXIE_BAG_in_Ivory_NYLON_2528BACA21080002012529_7.jpg);">
-    
+            <div class="prodCar crvCor" *ngFor="let prod of prods">
+                <figure class="crvCor prodImg bg" style="background-image: url({{prod.photo}});">
                 </figure>
-                <h4>Beautiful bag</h4>
+                <h4>{{prod.name}}</h4>
                 <div class="flex" style="place-content: space-between;">
 
-                    <button class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
+                    <button class="lytBtn trans btn trasn" (click)="gotDet(prod.id)">Details</button>
+                    <button class="btn primary" (click)="gotDet(prod.id)">Buy Now</button>
                 </div>
             </div>
-            
-
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/A-Fendi-bag.jpg);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/160851_1653064485.webp);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            
-            
-            <div class="prodCar crvCor">
-                <figure class="crvCor prodImg bg" style="background-image: url(../../assets/1_-_NAKEDVICE_-_THE_LEXIE_BAG_in_Ivory_NYLON_2528BACA21080002012529_7.jpg);">
-    
-                </figure>
-                <h4>Beautiful bag</h4>
-                <div class="flex" style="place-content: space-between;">
-
-                    <button (click)="gotDet('1234564')" class="lytBtn trans btn trasn">Details</button>
-                    <button class="btn primary">Buy Now</button>
-                </div>
-            </div>
-            
-
             
         </div>
         

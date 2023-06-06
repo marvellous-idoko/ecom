@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private fb: FormBuilder, private s: SrvService, private r:Router) { }
   signInForm = this.fb.group({
-    email: ['', Validators.required,],
+    email: ['', Validators.required,Validators.email],
     pwd: ['', Validators.required,]
   })
   submit(){

@@ -8,6 +8,7 @@ import { ShopXComponent } from './shop-x/shop-x.component';
 import { ViewAllProdsComponent } from './view-all-prods/view-all-prods.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { MainStoreComponent } from './main-store/main-store.component';
+import { GoodsDetailsComponent } from './goods-details/goods-details.component';
 
 const routes: Routes = [
   
@@ -22,7 +23,9 @@ const routes: Routes = [
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'product-details/:id/:buy', component: GoodsDetailsComponent},
+  {path: 'product-details/:id', component: GoodsDetailsComponent},
+  {path: '', redirectTo: '/shop-one', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -30,16 +30,55 @@ api.get('/detials/:id', async (req, res) => {
     prod.name = req.body.name
     prod.model = req.body.model
     prod.cat = req.body.category
-    prod.dateReg =  Date.now()
+    prod.dateReg = Date.now()
     prod.photo = req.body.photo
+    prod.desc = req.body.desc
     try {
-            await prod.save()
-            res.status(200).json({code:1,msg:'suucessfully uploaded your product'})
-    
+        console.log(await prod.save())
+        res.status(200).json({ code: 1, msg: 'suucessfully uploaded your product' })
+
     } catch (e) {
         res.status(503).json({ code: 0, msg: "err " + e })
 
     }
 
+}).get('/getAllProducts', async (req, res) => {
+    try {
+        res.json({ code: 1, msg: await product.find() })
+    } catch (e) {
+        res.status(500).json({ code: 0, msg: "err " + e })
+
+    }
+}).get('/getProdDetails/:id', async (req, res) => {
+    try {
+        res.json({ code: 1, msg: await product.findOne({ id: req.params.id }) })
+    } catch (e) {
+        res.status(500).json({ code: 0, msg: "err " + e })
+    }
+}).get('/chkAvl/:id/:qty', async (req, res) => {
+    try {
+        let prd = await product.findOne({ id: req.params.id })
+        let qty = parseInt(prd['qty'])
+        if (qty > 0) {
+            console.log(qty >= parseInt(req.params.qty))
+            console.log( parseInt(req.params.qty))
+            console.log(qty)
+            if (qty >= parseInt(req.params.qty)){
+
+                res.status(200).json({ code: 1, msg: 'available', avail: true })
+            }else{
+                res.status(200).json({ code: 1, msg: 'available, but less', avail: true, qty:qty })
+
+            }
+
+        } else {
+            res.status(200).json({ code: 1, msg: 'not available', avail: false })
+        }
+    }
+    catch (e) {
+        res.status(500).json({ code: 0, msg: "err " + e })
+        console.log(e)
+    }
 })
+
 exports.api = api

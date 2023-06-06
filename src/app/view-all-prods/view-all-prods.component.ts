@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SrvService } from '../srv.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-view-all-prods',
@@ -6,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-all-prods.component.css']
 })
 export class ViewAllProdsComponent implements OnInit {
+  constructor(
+    private s: SrvService,
+   
+    ) { }
+    
+  prods: any[] = []
+ 
   ngOnInit(): void {
-    console.log('jhvc')
+    
+    this.s.getAllProds().
+      subscribe((r: any) => {
+        this.prods = r['msg']
+        console.log(r['msg'])
+      })
   }
+
 }

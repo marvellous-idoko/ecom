@@ -1,1 +1,67 @@
-<p>shop-x works!</p>
+<section>
+    <div class="ki bg" id="lo">
+        <div class="flex secPad" id="de">
+            <div style="flex: 1;">
+                <h1 class="wlcTxt">We are Shop   <b style="color:var(--light)">X</b></h1>
+                <h1 class="wlcTxt">Get all  <b style="color:var(--light)">X-rated</b> Products Here </h1>
+                <h1 class="wlcTxt">Get this Bagback at <b style="color:var(--light)">$5</b> </h1>
+
+                <div>
+                    <button mat-raised-button>Buy Now</button>
+                    <button  mat-stroked-button> <b style="color:white"> View Details</b></button>
+                </div>
+            </div>
+            <div style="flex: 1;height: inherit;">
+                <figure style="height:inherit;" class="bg crvCor" style="height: 40vh; background-image: url(../../assets/A-Fendi-bag.jpg);">
+
+                </figure>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div style="height:50vh;" class="secPad">
+        <h2>
+            X-Home Items
+        </h2>
+        <div class="flex" style="justify-content: space-around;">
+
+            <div class="prodCar crvCor" *ngFor="let prod of prods">
+                <figure class="crvCor prodImg bg" style="background-image: url({{prod.photo}});">
+                </figure>
+                <h4>{{prod.name}}</h4>
+                <div class="flex" style="place-content: space-between;">
+
+                    <button class="lytBtn trans btn trasn" (click)="gotDet(prod.id)">Details</button>
+                    <button class="btn primary" (click)="gotDet(prod.id)">Buy Now</button>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<section>
+    <div style="height:50vh;" class="secPad">
+        <h2>
+            Groceries-X
+        </h2>
+        <div class="flex" style="justify-content: space-around;">
+
+            <div class="prodCar crvCor" *ngFor="let prod of prods">
+                <figure class="crvCor prodImg bg" style="background-image: url({{prod.photo}});">
+                </figure>
+                <h4>{{prod.name}}</h4>
+                <div class="flex" style="place-content: space-between;">
+
+                    <button class="lytBtn trans btn trasn" (click)="gotDet(prod.id)">Details</button>
+                    <button class="btn primary" (click)="gotDet(prod.id)">Buy Now</button>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>

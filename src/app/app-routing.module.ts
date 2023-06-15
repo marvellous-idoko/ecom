@@ -9,6 +9,7 @@ import { ViewAllProdsComponent } from './view-all-prods/view-all-prods.component
 import { CreateProductComponent } from './create-product/create-product.component';
 import { MainStoreComponent } from './main-store/main-store.component';
 import { GoodsDetailsComponent } from './goods-details/goods-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   
@@ -22,6 +23,7 @@ const routes: Routes = [
     
   ]},
   {path: 'login', component: LoginComponent},
+  {path: 'check-out', component: CheckoutComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'product-details/:id/:buy', component: GoodsDetailsComponent},
   {path: 'product-details/:id', component: GoodsDetailsComponent},

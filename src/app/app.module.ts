@@ -21,6 +21,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ViewAllProdsComponent } from './view-all-prods/view-all-prods.component';
 import { ShopXComponent } from './shop-x/shop-x.component';
 import { MainStoreComponent } from './main-store/main-store.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MainStoreComponent } from './main-store/main-store.component';
     CreateProductComponent,
     ViewAllProdsComponent,
     ShopXComponent,
-    MainStoreComponent
+    MainStoreComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

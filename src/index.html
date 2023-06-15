@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>EcommApp</title>
@@ -10,11 +11,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
   <app-root></app-root>
-<script>
-  window. onbeforeunload = function() { localStorage.removeItem('key'); return ''; };
-</script>
+  <script>
+    async function logJSONData(data = {}) {
+      const response = await fetch("http://localhost:3000/api/releaseGoods", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      });
+      const jsonData = await response.json();
+      console.log(jsonData);
+    }
+    // const beforeUnloadListener = (event) => {
+    //   event.preventDefault();
+    //   return (event.returnValue = "");
+    // };
+
+    // const nameInput = document.querySelector("#name");
+
+    // window.addEventListener("beforeunload", (event) => {
+    //   if (event.target.value !== "") {
+    //     console.log('jhgfd')
+    //     // addEventListener("beforeunload", beforeUnloadListener, { capture: true });
+    //   } else {
+    //     console.log('mnbv')
+    //     // removeEventListener("beforeunload", beforeUnloadListener, {
+    //     //   capture: true,
+    //     // });
+    //   }
+    // });
+
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = "\o/";
+
+      (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+      if (confirmationMessage == 'o/') {
+        logJSONData(JSON.parse(localStorage.getItem('cart')))
+        localStorage.clear()
+      }
+      // else{
+      //   logJSONData(JSON.parse(localStorage.getItem('cart')))
+      //   localStorage.clear()
+      // }
+      return confirmationMessage;                            //Webkit, Safari, Chrome
+    });
+
+// window.addEventListener('beforeunload', function (e) {
+//     e.preventDefault();
+//     e.returnValue = '';
+// });
+// window.beforeUnloadListener = function () {
+//   e.preventDefault();
+
+//       // let data = JSON.parse(localStorage.getItem('cart'))
+//       confirm("defghb")
+//       alert('mnbv')
+//       localStorage.removeItem('cart'); 
+//       return 'jbjb';
+//     };
+
+  </script>
 </body>
 
 </html>

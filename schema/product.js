@@ -10,8 +10,10 @@ const prod = mongoose.Schema({
     model:String,
     cat:String,
     desc:String,
-    photo:String
-    
-
-})
+    photo:String,
+    lock: {
+        type: Boolean,
+        default: false
+    }
+    })
 module.exports = mongoose.model('productEcom', prod);

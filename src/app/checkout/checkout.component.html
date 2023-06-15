@@ -1,0 +1,30 @@
+<section>
+    <div class="flex" style="flex-direction: column;">
+        <h1 style="text-align: center;color: var(--dark);">Check Out Page</h1>
+        <h1 style="color: red;"  *ngIf="cart.length === 0 && cart === null">
+        No Product yet in your cart
+        go back to add to the cart
+        </h1>
+        <button mat-stroked-button (click)="r.back()"  *ngIf="cart.length === 0 && cart === null">
+            Go back            
+        </button>
+        <table  *ngIf="cart.length !== 0" style="width: 50vw;">
+            <tr class="flex" style="place-content: space-around;">
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            <tr class="flex" style="place-content: space-around;" *ngFor="let prod of cart">
+                <td>{{prod.name}}</td>
+                <td>{{prod.qtyOrdered}}</td>
+                <td>{{prod.price | currency:"$ "}}</td>
+            </tr>
+            <tr class="flex" style="    place-content: space-around;">
+                <td></td>
+                <td>Gross Total</td>
+                <td>{{total | currency:"$ "}}</td>
+            </tr>
+        </table>
+        <button *ngIf="cart.length !== 0" mat-raised-button color="primary" (click)="compl()">Complete Purchase</button>
+    </div>
+</section>

@@ -15,6 +15,13 @@ export class SrvService {
   getSingleProdDetails(id:string){
     return this.http.get(this.srvr+"api/getProdDetails/"+id,this.httpOptions)
   }
+  checkOut(id:string,qty:string){
+    return this.http.get(this.srvr+"api/checkout/"+id + "/"+qty,this.httpOptions)
+
+  }
+  lckProd(id:string){
+    return this.http.get(this.srvr+"api/lockProd/"+id,this.httpOptions)
+  }
   signUp(data: {}) {
     return this.http.post(this.srvr + 'auth/signup', data, this.httpOptions)
   }

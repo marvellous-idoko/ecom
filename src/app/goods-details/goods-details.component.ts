@@ -10,7 +10,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class GoodsDetailsComponent implements OnInit {
   constructor(private s: SrvService,
-    private r: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder) { }
   id: string = ''
@@ -52,22 +51,29 @@ export class GoodsDetailsComponent implements OnInit {
         }
       })
   }
+  lockProd(){
+    this.s.lckProd(this.prod['_id']).subscribe((r)=>console.log(r))
+  }
   addToCart() {
     let cart: {}[] = []
     let yu: any
     console.log(localStorage.getItem('cart'))
     if (localStorage.getItem('cart') == null) {
       console.log(localStorage.getItem('cart'))
+      this.prod['qtyOrdered'] = this.qtyFrm.get('qty')!.value
+      this.lockProd()
       cart.push(this.prod)
       localStorage.setItem('cart', JSON.stringify(cart))
 
     } else {
 
       yu = JSON.parse(localStorage.getItem('cart')!)
+      this.prod['qtyOrdered'] = this.qtyFrm.get('qty')!.value;
+      this.prod['photo'] = ''
+      this.lockProd()
       yu.push(this.prod)
       localStorage.setItem('cart', JSON.stringify(yu))
     }
-    window.location.reload()
-
+    alert("Successfully added to your cart. Note once you leave the site, your cart would be cleared and the products might no longer be available")
   }
 }

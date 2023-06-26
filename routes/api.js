@@ -2,7 +2,12 @@ var express = require("express");
 const api = express.Router();
 const user = require("../schema/user");
 const product = require("../schema/product");
-
+const Prod = require("../producer");
+const prdcr = new Prod();
+const config = {
+  url: "amqps://braczsey:P-7s2hdK4zkm2BTNgGXkSZPe3D08whDQ@gerbil.rmq.cloudamqp.com/braczsey",
+  exgNme: "storeExch",
+};
 api
   .get("/detials/:id", async (req, res) => {
     try {
@@ -22,6 +27,7 @@ api
       res.status(500).json({ code: 0, msg: "err " + e });
     }
   })
+
   .post("/createProduct", async (req, res) => {
     let prod = new product();
     prod.qty = req.body.qty;
@@ -44,7 +50,10 @@ api
   })
   .get("/getAllProducts", async (req, res) => {
     try {
-      res.json({ code: 1, msg: await product.find() });
+      res.json({
+        code: 1,
+        msg: await product.find().sort({ _id: -1 }).limit(4),
+      });
     } catch (e) {
       res.status(500).json({ code: 0, msg: "err " + e });
     }
@@ -58,20 +67,19 @@ api
   })
   .get("/chkAvl/:id/:qty", async (req, res) => {
     try {
+      srchr(req.params.id )
       let prd = await product.findOne({ id: req.params.id });
       let qty = parseInt(prd["qty"]);
       if (qty > 0 && prd.lock == false) {
         if (qty >= parseInt(req.params.qty)) {
           res.status(200).json({ code: 1, msg: "available", avail: true });
         } else {
-          res
-            .status(200)
-            .json({
-              code: 1,
-              msg: "available, but less",
-              avail: true,
-              qty: qty,
-            });
+          res.status(200).json({
+            code: 1,
+            msg: "available, but less",
+            avail: true,
+            qty: qty,
+          });
         }
       } else {
         res.status(200).json({ code: 1, msg: "not available", avail: false });
@@ -83,11 +91,11 @@ api
   })
   .get("/lockProd/:id", async (req, res) => {
     try {
-        console.log(req.params)
+      console.log(req.params);
       let y = await product.findById(req.params.id);
       y.lock = true;
       y.save();
-      console.log(y.lock)
+      console.log(y.lock);
       res.json({ code: 1, msg: y.lock });
     } catch (e) {
       res.status(500).json({ code: 0, msg: "err " + e });
@@ -96,7 +104,7 @@ api
   })
   .get("/checkout/:id/:qty", async (req, res) => {
     try {
-        console.log(req.params)
+      console.log(req.params);
       let y = await product.findById(req.params.id);
       y.qty = y.qty - parseInt(req.params.qty);
       y.lock = false;
@@ -122,4 +130,24 @@ api
     }
   });
 
+async function srchr(id) {
+  await prdcr.pubMsg("isAvailable", JSON.stringify({ id: id }));
+}
+async function insertProd(prod) {
+  await prdcr.pubMsg("insert", JSON.stringify(prod));
+}
+async function deleProd(prod) {
+  await prdcr.pubMsg("delete", JSON.stringify(prod));
+}
+async function searchRespReceiver() {
+  const cntn = await amqp.connect(config.url);
+  const chnl = await cntn.createChannel();
+  await chnl.assertExchange(config.exgNme, "direct");
+  const q = await chnl.assertQueue("infoQueue");
+  await chnl.bindQueue(q.queue, config.exgNme, "available");
+  chnl.consume(q.queue, (msg) => {
+    console.log(msg);
+    chnl.ack(msg);
+  });
+}
 exports.api = api;
